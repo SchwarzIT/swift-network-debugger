@@ -1,0 +1,30 @@
+name: CD
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: macos-latest
+
+    strategy:
+      matrix:
+        include:
+          - ios: "16.0"
+          - ios: "15.0"
+          - ios: "14.0"
+
+    name: Test iOS ${{ matrix.ios }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      - name: Run tests
+        run: xcodebuild test -scheme NetworkDebugger -destination "platform=iOS Simulator,name=iPhone 14,OS=$" | xcpretty & exit ${PIPESTATUS[0]}
