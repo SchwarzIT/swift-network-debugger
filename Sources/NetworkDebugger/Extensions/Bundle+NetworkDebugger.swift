@@ -21,7 +21,7 @@
 import Foundation
 
 extension Bundle {
-    static let networkDebugger: Bundle = {
+    private static let spmBundle: Bundle? = {
         let bundleName = "NetworkDebugger_NetworkDebugger"
         
         let overrides: [URL]
@@ -52,6 +52,27 @@ extension Bundle {
                 return bundle
             }
         }
-        fatalError("unable to find bundle named NetworkDebugger_NetworkDebugger")
+        return nil
+    }()
+    
+    private static let podsBundle: Bundle? = {
+        guard let bundleUrl = Bundle(for: NetworkDebugger.self).url(
+                forResource: "NetworkDebugger",
+                withExtension: "bundle"
+            ),
+              let bundle = Bundle(url: bundleUrl)
+        else { return nil }
+        debugPrint("Debug: \(bundleUrl.absoluteString)")
+        return bundle
+    }()
+    
+    static let ndBundle: Bundle = {
+        if let spmBundle {
+            return spmBundle
+        }
+        if let podsBundle {
+            return podsBundle
+        }
+        fatalError("Unable to find bundle for NetworkDebugger.")
     }()
 }

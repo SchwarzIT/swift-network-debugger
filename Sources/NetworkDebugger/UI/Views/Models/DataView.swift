@@ -41,7 +41,7 @@ struct DataView: View {
     }
     
     private func getFileContents(forResource: String, ofType: String) -> String {
-        let fileURL = Bundle.networkDebugger.path(forResource: forResource, ofType: ofType)!
+        let fileURL = Bundle.ndBundle.path(forResource: forResource, ofType: ofType)!
         let fileManager = FileManager.default
         let data = fileManager.contents(atPath: fileURL)!
         let fileContents = String(data: data, encoding: .utf8)
