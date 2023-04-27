@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name = "NetworkDebugger"
-    s.version = "1.0.0"
+    s.version = "1.0.1"
     s.summary = "A Swift package designed to view your App's networking activity with minimal setup."
 
     s.homepage = "https://github.com/schwarzit/swift-network-debugger"
