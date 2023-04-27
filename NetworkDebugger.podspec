@@ -19,5 +19,8 @@ Pod::Spec.new do |s|
     s.ios.deployment_target = "14.0"
     s.swift_version = "5.0"
 
-    s.source_files = "Sources/NetworkDebugger/**/*"
+    s.source_files = "Sources/NetworkDebugger/**/*.{swift}"
+    s.resource_bundles = {
+        'NetworkDebugger' => ['Sources/NetworkDebugger/Resources/**/*']
+    }
 end
