@@ -23,7 +23,7 @@ Install through the Swift Package Manager using Xcode.
 ### Cocoa Pods
 Add to your `podfile` and install using `pod install`.
 ```ruby
-pod 'NetworkDebugger', '~> 1.0.1'
+pod 'NetworkDebugger', '1.0.1'
 ```
 
 ## Setup
