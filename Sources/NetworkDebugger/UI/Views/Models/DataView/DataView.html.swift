@@ -1,9 +1,9 @@
 //
-// DataView.js
-// NetworkDebugger
+//  DataView.html.swift
 //
-// Created by Michael Artes on 28.02.23.
-// Copyright © 2023 Schwarz IT KG.
+//
+//  Created by Michael Artes on 26.06.23.
+//  Copyright © 2023 Schwarz IT KG.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -18,20 +18,19 @@
 //  limitations under the License.
 //
 
-function isJson(str) {
-    try { JSON.parse(str) }
-    catch(e) { return false; }
-    return true;
+enum DataViewHtml {
+    static let source = #"""
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <!-- Highlightjs 11.5.1 styles default.min.css -->
+            <style>{CSS}</style>
+        </head>
+        <body>
+            <pre>
+                <code id="code" style="font-size: 50px;">{CONTENT}</code>
+            </pre>
+        </body>
+        </html>
+    """#
 }
-
-function makeJSONPretty() {
-    const code = document.getElementById("code");
-    const codeText = code.textContent;
-    if (!isJson(codeText)) return;
-    const codeJson = JSON.parse(codeText);
-    const prettyJson = JSON.stringify(codeJson, null, 4);
-    code.textContent = prettyJson;
-}
-
-makeJSONPretty();
-hljs.highlightAll();

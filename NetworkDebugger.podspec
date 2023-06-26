@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name = "NetworkDebugger"
-    s.version = "1.0.1"
+    s.version = "1.0.2"
     s.summary = "A Swift package designed to view your App's networking activity with minimal setup."
 
     s.homepage = "https://github.com/schwarzit/swift-network-debugger"
@@ -20,7 +20,4 @@ Pod::Spec.new do |s|
     s.swift_version = "5.0"
 
     s.source_files = "Sources/NetworkDebugger/**/*.{swift}"
-    s.resource_bundles = {
-        'NetworkDebugger' => ['Sources/NetworkDebugger/Resources/**/*']
-    }
 end

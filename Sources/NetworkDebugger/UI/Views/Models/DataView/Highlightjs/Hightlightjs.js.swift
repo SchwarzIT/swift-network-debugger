@@ -1,9 +1,19 @@
-/*!
- Highlight.js v11.5.1 (git: b8f233c8e2)
- (c) 2006-2022 Ivan Sagalaev and other contributors
- License: BSD-3-Clause
- */
-var hljs=function(){"use strict";var e={exports:{}};function n(e){
+//
+//  Hightlightjs.js.swift
+//
+//
+//  Created by Michael Artes on 26.06.23.
+//  See license in the LICENSE file of this directory.
+//
+
+enum HighlightjsJs {
+    static let source = #"""
+        /*!
+    Highlight.js v11.5.1 (git: b8f233c8e2)
+    (c) 2006-2022 Ivan Sagalaev and other contributors
+    License: BSD-3-Clause
+    */
+    var hljs=function(){"use strict";var e={exports:{}};function n(e){
     return e instanceof Map?e.clear=e.delete=e.set=()=>{
         throw Error("map is read-only")}:e instanceof Set&&(e.add=e.clear=e.delete=()=>{
             throw Error("set is read-only")
@@ -1171,3 +1181,6 @@ var hljs=function(){"use strict";var e={exports:{}};function n(e){
                                                                                                                                  const n=e.replace("grmr_","").replace("_","-");je.registerLanguage(n,Ue[e])}
                                                                              return je}()
                                                                              ;"object"==typeof exports&&"undefined"!=typeof module&&(module.exports=hljs);
+
+    """#
+}
