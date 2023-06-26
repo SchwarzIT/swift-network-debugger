@@ -40,23 +40,15 @@ struct DataView: View {
         return prettyData
     }
     
-    private func getFileContents(forResource: String, ofType: String) -> String {
-        let fileURL = Bundle.ndBundle.path(forResource: forResource, ofType: ofType)!
-        let fileManager = FileManager.default
-        let data = fileManager.contents(atPath: fileURL)!
-        let fileContents = String(data: data, encoding: .utf8)
-        return fileContents!
-    }
-    
     private func getHtmlContents() -> String {
-        let css = getFileContents(forResource: "Highlightjs", ofType: "css")
-        let html = getFileContents(forResource: "DataView", ofType: "html")
+        let css = HighlightjsCss.source
+        let html = DataViewHtml.source
         return html.replacingOccurrences(of: "{CSS}", with: css)
     }
     
     private func getScriptContents() -> String {
-        let highlightjs = getFileContents(forResource: "Highlightjs", ofType: "js")
-        let dataView = getFileContents(forResource: "DataView", ofType: "js")
-        return highlightjs.appending("\n\(dataView)")
+        let highlightjs = HighlightjsJs.source
+        let dataViewJs = DataViewJs.source
+        return highlightjs.appending("\n\(dataViewJs)")
     }
 }
