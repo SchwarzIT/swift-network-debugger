@@ -78,8 +78,6 @@ internal enum Constants {
         guard let viewController = UIViewController.presentedViewController() else { return }
         return presentNetworkDebugger(on: viewController)
     }
-
-    private static let networkDebuggerViewController = UIHostingController(rootView: NetworkDebuggerView())
     
     /**
      Presents NetworkDebugger on the provided ViewController.
@@ -88,7 +86,12 @@ internal enum Constants {
         - viewController: The ViewController to display NetworkDebugger on.
      */
     @objc public static func presentNetworkDebugger(on viewController: UIViewController) {
-        guard started, !networkDebuggerViewController.isBeingPresented else { return }
+        guard started,
+              viewController.presentedViewController == nil,
+              !(viewController is UIHostingController<NetworkDebuggerView>)
+        else { return }
+        
+        let networkDebuggerViewController = UIHostingController(rootView: NetworkDebuggerView())
         viewController.present(networkDebuggerViewController, animated: true)
     }
 }
