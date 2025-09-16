@@ -12,7 +12,6 @@ fileprivate enum ChartViewConstants {
     static let BAR_HEIGHT: CGFloat = 50
 }
 
-@available(iOS 16.0, *)
 struct ChartView<Content: View, Subview: View>: View {
     typealias Key = String
     typealias Value = Double
@@ -70,7 +69,6 @@ struct ChartView<Content: View, Subview: View>: View {
                 }
                 .navigationTitle(statisticsService.selectedHost)
                 .navigationBarTitleDisplayMode(.inline)
-                .ensureNavigationBarVisible()
             }
         }
     }
@@ -120,7 +118,6 @@ struct ChartView<Content: View, Subview: View>: View {
     }
 }
 
-@available(iOS 16.0, *)
 extension ChartView where Subview == EmptyView {
     init(limitedHeight: Bool, elements: Dictionary<Key, Value>, @ViewBuilder annotationForKey: @escaping (Key) -> Content) {
         self.init(limitedHeight: limitedHeight, elements: elements, annotationForKey: annotationForKey, hasSubview: false) {
