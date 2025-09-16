@@ -46,7 +46,6 @@ struct ModelView: View {
             currentPage
             Spacer()
         }
-        .ensureNavigationBarVisible()
     }
     
     @ViewBuilder

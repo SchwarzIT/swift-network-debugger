@@ -89,6 +89,5 @@ struct SettingsView: View {
                 Text("There's nothing here (yet)")
             }
         }
-        .ensureNavigationBarVisible()
     }
 }

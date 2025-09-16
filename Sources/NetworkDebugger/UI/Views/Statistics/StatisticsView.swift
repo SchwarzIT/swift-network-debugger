@@ -8,7 +8,6 @@
 import Charts
 import SwiftUI
 
-@available(iOS 16.0, *)
 struct StatisticsView: View {
     @EnvironmentObject var modelsService: ModelsService
     @EnvironmentObject var statisticsService: StatisticsService
@@ -46,7 +45,6 @@ struct StatisticsView: View {
             }
         }
         .navigationTitle("Statistics")
-        .ensureNavigationBarVisible()
     }
     
     private var amountOfRequests: some View {

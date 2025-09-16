@@ -50,19 +50,17 @@ public struct NetworkDebuggerView: View {
                     }
                 }
                 .sheet(isPresented: $isStatisticsPresented) {
-                    if #available(iOS 16.0, *) {
-                        NavigationStack {
-                            StatisticsView()
-                                .navigationTitle("Statistics")
-                                .navigationBarTitleDisplayMode(.inline)
-                                .toolbar {
-                                    ToolbarItem(placement: .primaryAction) {
-                                        Button("Done") {
-                                            isStatisticsPresented = false
-                                        }
+                    NavigationStack {
+                        StatisticsView()
+                            .navigationTitle("Statistics")
+                            .navigationBarTitleDisplayMode(.inline)
+                            .toolbar {
+                                ToolbarItem(placement: .primaryAction) {
+                                    Button("Done") {
+                                        isStatisticsPresented = false
                                     }
                                 }
-                        }
+                            }
                     }
                 }
                 .toolbar {
@@ -70,37 +68,26 @@ public struct NetworkDebuggerView: View {
                 } statistics: {
                     isStatisticsPresented = true
                 }
-                .ensureNavigationBarVisible()
         }
         .environmentObject(modelsService)
         .environmentObject(settingsService)
         .environmentObject(statisticsService)
-        .searchable(searchText: $searchText)
+        .searchable(text: $searchText)
     }
 }
 
 private extension View {
     func toolbar(settings: @escaping () -> Void, statistics: @escaping () -> Void) -> some View {
-        if #available(iOS 16.0, *) {
-            return self.toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button("Settings") {
-                        settings()
-                    }
-                }
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Statistics") {
-                        statistics()
-                        
-                    }
+        toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button("Settings") {
+                    settings()
                 }
             }
-        } else {
-            return self.toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button("Settings") {
-                        settings()
-                    }
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Statistics") {
+                    statistics()
+                    
                 }
             }
         }

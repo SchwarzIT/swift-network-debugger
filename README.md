@@ -20,12 +20,6 @@
 ### Swift Package Manager
 Install through the Swift Package Manager using Xcode.
 
-### Cocoa Pods
-Add to your `podfile` and install using `pod install`.
-```ruby
-pod 'NetworkDebugger', '1.0.2'
-```
-
 ## Setup
 In order for the package to work properly, you need to call `start()` as the first method in your `AppDelegate`! (For SwiftUI apps you need to use `@UIApplicationDelegateAdaptor`)
 **Note:** It is highly encouraged to only call `start()` in debug or testing environments and **not** in production.

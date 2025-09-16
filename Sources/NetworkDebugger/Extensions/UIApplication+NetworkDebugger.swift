@@ -22,17 +22,10 @@ import UIKit
 
 extension UIApplication {
     var ndKeyWindow: UIWindow? {
-        if #available(iOS 15.0, *) {
-            return connectedScenes
-                .sorted { $0.sceneOrder < $1.sceneOrder }
-                .compactMap { $0 as? UIWindowScene }
-                .compactMap { $0.keyWindow }
-                .first
-        }
-        return connectedScenes
+        connectedScenes
             .sorted { $0.sceneOrder < $1.sceneOrder }
             .compactMap { $0 as? UIWindowScene }
-            .compactMap { $0.windows.first { $0.isKeyWindow }}
+            .compactMap { $0.keyWindow }
             .first
     }
 }

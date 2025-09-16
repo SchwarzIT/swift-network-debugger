@@ -22,18 +22,10 @@ import Foundation
 
 extension URL {
     var ndHost: String {
-        if #available(iOS 16.0, *) {
-            return host(percentEncoded: false) ?? "N/A"
-        } else {
-            return host ?? "N/A"
-        }
+        host(percentEncoded: false) ?? "N/A"
     }
     
     var ndPath: String {
-        if #available(iOS 16.0, *) {
-            return path(percentEncoded: false)
-        } else {
-            return path
-        }
+        path(percentEncoded: false)
     }
 }
